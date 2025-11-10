@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 
 st.title("🐔 Poultry Case Submission Form")
 
@@ -28,7 +29,59 @@ if st.button("Submit Case"):
     required_fields = [case_owner_name, farm_location, country_code, phone_number,
                        problem_description, type_of_chicken, symptoms]
     if all(required_fields):
-        st.success("✅ Case submitted successfully!")
         # You can add logic to store or send the data here
+
+        API_URL = "https://helpdesk.qiscus.com/api/v1/tickets"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer KVlBEPYRBj5mTQsIWQZQhw829AETUT"
+        }
+
+        response = requests.post(API_URL, json={
+            "division_id": "37",
+            "customer_email": f"user-{phone_number}@lclmq-sngxucojgvuq98p.com",
+            "customer_name": case_owner_name,
+            "title": f"Poultry Case - {case_owner_name}",
+            "priority": "medium",
+            "summary": problem_description,
+            "channel_id": "431",
+            "assignee_email": "mustafa@test.test",
+            "custom_fields": [
+                {
+                    "id": 871, # type of chicken
+                    "value": type_of_chicken
+                },
+                {
+                    "id": 872, # body weight
+                    "value": f"{body_weight}"
+                },
+                {
+                    "id": 873, # Body Temperature (°C)
+                    "value": f"{body_temperature}"
+                },
+                {
+                    "id": 874, # Daily Production Performance
+                    "value": daily_production
+                },
+                {
+                    "id": 875, # Age (weeks)
+                    "value": f"{age_weeks}"
+                },
+                {
+                    "id": 876, # Symptoms
+                    "value": symptoms
+                },
+                {
+                    "id": 877, # Pattern of Spread / Drop
+                    "value": pattern_of_spread
+                }
+            ]
+        }, headers=headers)
+
+        if response.status_code == 200:
+            st.success("✅ Case submitted successfully!")
+        else:
+            st.error(f"❌ failed to create ticket *. {response.json()}")
+
     else:
         st.error("❌ Please fill in all required fields marked with *.")
