@@ -31,7 +31,7 @@ if st.button("Submit Case"):
     if all(required_fields):
         # You can add logic to store or send the data here
 
-        API_URL = "https://helpdesk.qiscus.com/api/v1/tickets"
+        API_URL = "https://helpdesk.qiscus.com/api/v2/tickets"
         headers = {
             "Content-Type": "application/json",
             "Authorization": "Bearer KVlBEPYRBj5mTQsIWQZQhw829AETUT"
@@ -46,6 +46,7 @@ if st.button("Submit Case"):
             "summary": problem_description,
             "channel_id": "431",
             "assignee_email": "mustafa@test.test",
+            "form_id": "145",
             "custom_fields": [
                 {
                     "id": 871, # type of chicken
