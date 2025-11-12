@@ -32,7 +32,7 @@ def send_ticket_notification(phone_number, ticket):
     url = f"{OMNI_BASE_URL}/api/v3/admin/broadcast/client"
     headers = omni_headers()
     body = {
-        "channel_id": 7733,
+        "channel_id": 7729,
         "template_name": "japfa_ticket_created",
         "namespace": "27f5f7a6_c452_4f71_aeff_14fb50b67db8",
         "language": "id",
@@ -50,7 +50,7 @@ def send_ticket_notification(phone_number, ticket):
     return requests.post(url, headers=headers, json=body)
 
 def get_latest_room(phone_number):
-    url = f"{OMNI_BASE_URL}/api/v2/rooms/latest?channel_id=7733&source=wa&user_id={phone_number}"
+    url = f"{OMNI_BASE_URL}/api/v2/rooms/latest?channel_id=7729&source=wa&user_id={phone_number}"
     headers = omni_headers()
 
     return requests.get(url, headers=headers)
