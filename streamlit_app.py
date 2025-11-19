@@ -176,12 +176,12 @@ if st.button("Submit Case"):
         if response.status_code == 200:
             st.success("✅ Case submitted successfully!")
 
-            ticket = response.json().get('data')
+            # ticket = response.json().get('data')
             # notifResponse = send_ticket_notification(phone_number, ticket)
-            notifResponse = send_message_as_bot(phone_number, ticket)
-            if notifResponse.status_code != 200:
-                print("failed send notif to customer: ", notifResponse.json())
-                st.error("❌ failed send notif to customer")
+            # notifResponse = send_message_as_bot(phone_number, ticket)
+            # if notifResponse.status_code != 200:
+            #     print("failed send notif to customer: ", notifResponse.json())
+            #     st.error("❌ failed send notif to customer")
         else:
             print("failed to create ticket: ", response.json())
             st.error("❌ failed to create ticket.")
