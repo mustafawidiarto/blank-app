@@ -3,7 +3,7 @@ import requests
 
 # --- CONFIG ---
 BASE_URL = "https://helpdesk.qiscus.com"
-TOKEN = "Bearer KVlBEPYRBj5mTQsIWQZQhw829AETUT"
+TOKEN = "Bearer -"
 OMNI_BASE_URL = "https://multichannel-api.qiscus.com"
 OMNI_APP_CODE = "lclmq-sngxucojgvuq98p"
 OMNI_SECRET_KEY = "-"
