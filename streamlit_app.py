@@ -6,7 +6,7 @@ BASE_URL = "https://helpdesk.qiscus.com"
 TOKEN = "Bearer KVlBEPYRBj5mTQsIWQZQhw829AETUT"
 OMNI_BASE_URL = "https://multichannel-api.qiscus.com"
 OMNI_APP_CODE = "lclmq-sngxucojgvuq98p"
-OMNI_SECRET_KEY = "904eb6f8687c2aadc8c2864c01a0e2bf"
+OMNI_SECRET_KEY = "-"
 
 # --- FUNCTIONS ---
 def upload_image(uploaded_image):
